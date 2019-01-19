@@ -44,6 +44,7 @@ class ConversionValue(object):
     def __str__(self):
         return " ".join(self.value)
 
+    # --- Operator Overloading --- #
     def __add__(self, other_value):
         if type(self) == type(other_value):
             return type(self)([*self.value, *other_value.value])
@@ -61,6 +62,16 @@ class ConversionValue(object):
         bin_one = self.binary()
         bin_two = other_value.binary()
         return type(self)(self._convert.logical_or(str(bin_one), str(bin_two)))
+
+    def __xor__(self, other_value):
+        original_type = type(self)
+        bin_one = self.binary()
+        bin_two = other_value.binary()
+        return type(self)(self._convert.logical_xor(str(bin_one), str(bin_two)))
+
+    def __invert__(self):
+        original_type = type(self)
+        return type(self)(self._convert.logical_not(str(self.binary())))
 
     def _check_value_type(self):
         value_type = type(self.value)
@@ -146,9 +157,11 @@ class Decimal(ConversionValue):
                 self.value = [self.value]
 
     def _check_value_size(self):
+        '''
         for value in self.value:
             if int(value) > (2**self._size) - 1:
                 raise BitLengthError
+        '''
 
 
 class Ascii(ConversionValue):
@@ -172,6 +185,8 @@ class Ascii(ConversionValue):
 
 
 if __name__ == '__main__':
+
+    """
     binary_number = Binary("00110101")
     other_binary = Binary("11001100 10101010")
     decimal_number = Decimal("74 75 32 99")
@@ -188,6 +203,17 @@ if __name__ == '__main__':
     print(decimal_number.binary().decimal())
 
     print((decimal_number.binary() & binary_number.binary()).decimal())
+
+    """
+    # --- xor test --- #
+    bin_one = Binary("00001111")
+    bin_two = Binary("01000000")
+    dec_one = Decimal("52")
+
+    print(dec_one.binary())
+    print(~dec_one.binary())
+
+    print((~dec_one).decimal())
 
 
     #print(decimal_number & binary_number)
