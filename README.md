@@ -435,4 +435,7 @@ None None
 </details>
 </p>
 </details>
- 
+
+Further Documentaion can be found in source code.
+Project by Gavin Mallott
+Visit me at [gavinmallott.com](http://gavinmallott.com)
