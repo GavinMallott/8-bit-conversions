@@ -44,7 +44,7 @@ print("\nBitwise Shift:")
 [print((bin + " >> " + "2" + ": " + convert.bitwise_shift(bin, 1, 2)) + ", " + bin + " << " + "2" + (convert.bitwise_shift(bin, 0, 2))) for bin in binaries]
 ```
 
-<details><summary>Will output:</summary>
+<details><summary>This will output:</summary>
 
 ```
 Binaries:
@@ -127,7 +127,8 @@ Bitwise Shift:
 ## conversions.py
 
  The conversions.py file creates datatypes for Binary, Hexadecimal, Decimal, and Ascii.  The ConversionValue class is the base class, with each subtype inhieriting from it.  ConversionValue adds methods to convert easily between different datatypes with `self.binary(), self.hexadecimal(), self.decimal(), and self.ascii()`. 
-  The ConversionValue class also adds operator overloading methods.  The `+` operator concatentates numbers of the same datatype.  The `&, |, ^, and ~` perform and, or, xor, and not operations respectivly. The `>> and <<` perform bitwise shifts on binary numbers.
+ 
+ The ConversionValue class also adds operator overloading methods.  The `+` operator concatentates numbers of the same datatype.  The `&, |, ^, and ~` perform and, or, xor, and not operations respectivly. The `>> and <<` perform bitwise shifts on binary numbers.
   
 #### Examples:
 <details><summary>Creating numbers in each datatype</summary>
@@ -157,7 +158,7 @@ print(ascii_two, "\n")
 ```
 <details><summary>This will output</summary>
 
-```python
+```
 Basic Values:
 00001111
 00110011 
