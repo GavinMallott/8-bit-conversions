@@ -4,8 +4,8 @@ Binary Conversions
 
 Author: Gavin Mallott
 Created: November 26, 2016
-Lasted Edited: March 19, 2018
-Last Edit: Improved logical operators
+Lasted Edited: January 20, 2019
+Last Edit: Added bitwise shift function, improved documentation
 """
 
 
@@ -27,12 +27,11 @@ class Convert(object):
         Hexadecimal to Binary,
         and ASCII Comparisons
     """
-
     def __init__(self):
         pass
 
     # General Conversions
-    def to_binary(self, ascii=None, decimal=None, hexadecimal=None, binary=None):
+    def to_binary(self, ascii=None, decimal=None, hexadecimal=None, binary=None) -> str:
         """ Takes a keyword value and returns it as a binary
         """
         if ascii != None:
@@ -44,7 +43,7 @@ class Convert(object):
         elif binary != None:
             return binary
 
-    def to_hex(self, ascii=None, binary=None, decimal=None, hexadecimal=None):
+    def to_hex(self, ascii=None, binary=None, decimal=None, hexadecimal=None) -> str:
         """ Takes a keyword value and returns it as a hexadecimal
         """
         if ascii != None:
@@ -56,7 +55,7 @@ class Convert(object):
         elif hexadecimal != None:
             return hexadecimal
 
-    def to_decimal(self, ascii=None, binary=None, hexadecimal=None, decimal=None):
+    def to_decimal(self, ascii=None, binary=None, hexadecimal=None, decimal=None) -> str:
         """ Takes a keyword value and returns it as a decimal
         """
         if ascii != None:
@@ -68,7 +67,7 @@ class Convert(object):
         elif decimal != None:
             return decimal
 
-    def to_ascii(self, decimal=None, binary=None, hexadecimal=None, ascii=None):
+    def to_ascii(self, decimal=None, binary=None, hexadecimal=None, ascii=None) -> str:
         """ Takes a keyword value and returns it as a decimal
         """
         try:
@@ -84,7 +83,7 @@ class Convert(object):
             raise AsciiConversionError
 
     # Number Conversions
-    def decimal_to_binary(self, dec):
+    def decimal_to_binary(self, dec: str) -> str:
         """Takes a given decimal number and converts it into a binary number"""
 
         dec = int(dec)
@@ -101,7 +100,7 @@ class Convert(object):
 
         return "".join(binary_number)
 
-    def decimal_to_hex(self, dec):
+    def decimal_to_hex(self, dec: str) -> str:
         """Takes a given decimal number and converts it into a hexadecimal number"""
 
         dec = int(dec)
@@ -130,12 +129,12 @@ class Convert(object):
 
         return str(first) + str(second)
 
-    def binary_to_hex(self, bin):
+    def binary_to_hex(self, bin: str) -> str:
         """Takes a given binary number and converts in into a hexadecimal number"""
 
         return self.decimal_to_hex(self.binary_to_decimal(bin))
 
-    def binary_to_decimal(self, bin):
+    def binary_to_decimal(self, bin: str) -> str:
         """Takes a given binary number and converts it into a decimal number"""
 
         value = 128
@@ -146,7 +145,7 @@ class Convert(object):
             value /= 2
         return str(sum(number_list))
 
-    def hex_to_decimal(self, hex):
+    def hex_to_decimal(self, hex: str) -> str:
         """Takes a given hexadecimal number and converts it into a decimal number"""
 
         number = []
@@ -163,44 +162,44 @@ class Convert(object):
             value /= 16
         return str(sum(number))
 
-    def hex_to_binary(self, hex):
+    def hex_to_binary(self, hex: str) -> str:
         """Takes a given hexadecimal number and converts it into a binary number"""
 
         return self.decimal_to_binary(self.hex_to_decimal(hex))
 
     # Text and number conversion
-    def ascii_to_hex(self, ascii):
+    def ascii_to_hex(self, ascii: str) -> str:
         """Takes a given ascii value and converts it into a hexadecimal number"""
 
         return self._interpret_ascii_to_hex(ascii)
 
-    def hex_to_ascii(self, hex):
+    def hex_to_ascii(self, hex: str) -> str:
         """Takes a given hexadecimal number and converts it into an ascii value"""
 
         return self._interpret_hex_to_acii(hex)
 
-    def ascii_to_binary(self, ascii):
+    def ascii_to_binary(self, ascii: str) -> str:
         """Takes a given ascii value and converts it into a binary number"""
 
         return self.hex_to_binary(self.ascii_to_hex(ascii))
 
-    def binary_to_ascii(self, bin):
+    def binary_to_ascii(self, bin: str) -> str:
         """Takes a given binary number and converts it into an ascii value"""
 
         return self.hex_to_ascii(self.binary_to_hex(bin))
 
-    def ascii_to_decimal(self, ascii):
+    def ascii_to_decimal(self, ascii: str) -> str:
         """Takes a given ascii value and converts it into a decimal number"""
 
         return self.hex_to_decimal(self.ascii_to_hex(ascii))
 
-    def decimal_to_ascii(self, dec):
+    def decimal_to_ascii(self, dec: str) -> str:
         """Takes a given decimal number and converts it into an ascii value"""
 
         return self.hex_to_ascii(self.decimal_to_hex(dec))
 
     # Ascii Library
-    def _interpret_hex_to_acii(self, hex):
+    def _interpret_hex_to_acii(self, hex: str) -> str:
         """Takes a given hexadecimal number and returns a matching ascii value"""
 
         if hex == '30': return '0'
@@ -305,7 +304,7 @@ class Convert(object):
         if hex == '7D': return '}'
         if hex == '7E': return '~'
 
-    def _interpret_ascii_to_hex(self, ascii):
+    def _interpret_ascii_to_hex(self, ascii: str) -> str:
         """Takes a given ascii value and returns a matching hexadecimal number"""
 
         if ascii == '0': return '30'
@@ -411,7 +410,8 @@ class Convert(object):
         if ascii == '~': return '7E'
 
     # Logical Operators
-    def _multi_logical(self, logic_function, bin_one, bin_two):
+    def _multi_logical(self, logic_function: 'function', bin_one: str, bin_two: str) -> str:
+        """Given a logic funtion (and, or, not, xor) and two binary numbers, will return the result"""
         if len(bin_one.split(" ")) > 1 and len(bin_two.split(" ")) > 1:
             operated_list = []
             for x, bin_1 in enumerate(bin_one.split(" ")):
@@ -424,7 +424,7 @@ class Convert(object):
         else:
             return logic_function(bin_one, bin_two)
 
-    def _single_xor(self, bin_one, bin_two):
+    def _single_xor(self, bin_one: str, bin_two: str) -> str:
         """Takes two given binary numbers and returns the logical XOR of the numbers"""
         bin_one = str(bin_one)
         bin_two = str(bin_two)
@@ -441,7 +441,7 @@ class Convert(object):
 
         return ''.join(xord_values)
 
-    def _single_and(self, bin_one, bin_two):
+    def _single_and(self, bin_one: str, bin_two: str) -> str:
         """Takes two given binary numbers and returns the logical AND of the numbers"""
 
         bin_one_int = []
@@ -463,7 +463,7 @@ class Convert(object):
 
         return "".join(andd_values)
 
-    def _single_or(self, bin_one, bin_two):
+    def _single_or(self, bin_one: str, bin_two: str) -> str:
         """Takes two given binary numbers and returns the logical OR of the numbers"""
 
         bin_one_int = []
@@ -485,7 +485,7 @@ class Convert(object):
 
         return "".join(ord_values)
 
-    def _single_not(self, bin):
+    def _single_not(self, bin: str) -> str:
         """Takes a given binary number and returns the logical NOT of the binary number"""
 
         bin_int = []
@@ -503,24 +503,43 @@ class Convert(object):
 
         return ''.join(notd_values)
 
-    def logical_and(self, bin_one, bin_two):
+    def logical_and(self, bin_one: str, bin_two: str) -> str:
+        """Returns the AND operation on two binary numbers"""
         return self._multi_logical(self._single_and, bin_one, bin_two)
 
-    def logical_or(self, bin_one, bin_two):
+    def logical_or(self, bin_one: str, bin_two: str) -> str:
+        """Returns the OR operation on two binary numbers"""
         return self._multi_logical(self._single_or, bin_one, bin_two)
 
-    def logical_xor(self, bin_one, bin_two):
+    def logical_xor(self, bin_one: str, bin_two: str) -> str:
+        """Returns the XOR operation on two binary numbers"""
         return self._multi_logical(self._single_xor, bin_one, bin_two)
 
-    def logical_not(self, bin_str):
+    def logical_not(self, bin_str: str) -> str:
+        """Returns the NOT operation on a binary number"""
         bins = bin_str.split(" ")
         notd_values = [self._single_not(bin) for bin in bins]
         return " ".join(notd_values)
 
+    def bitwise_shift(self, bin_str: str, direction: bool, bits: int) -> str:
+        """Shifts binary number by given bits in given direction (1: right, 0: left)"""
+        new_bin = ["0" for i in range(bits)]
+        all_bits = list(bin_str)
+        while len(new_bin) < 8:
+            if direction:
+                new_bin.append(all_bits[0])
+                del all_bits[0]
+            else:
+                new_bin = [all_bits[-1]] + new_bin
+                del all_bits[-1]
+
+        return ''.join(new_bin)
+                
 
 if __name__ == '__main__':
     convert = Convert()
 
+    '''
     bin_one = "01010101"
     bin_two = "11100000"
     bin_three = "00110011 " + "01010101"
@@ -536,3 +555,9 @@ if __name__ == '__main__':
     [[print(convert.logical_or(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
     print("\nXor:")
     [[print(convert.logical_xor(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
+    '''
+
+    binary_number = "01010101"
+    print(binary_number)
+    print(convert.bitwise_shift(binary_number, 1, 4))
+    print(convert.bitwise_shift(binary_number, 0, 4))
