@@ -4,7 +4,7 @@ Two main files:
   * convert.py
   * conversions.py
   
-<br />
+
 ## convert.py
 
  The convert.py file provides the Convert class.
