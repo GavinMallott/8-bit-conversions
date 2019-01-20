@@ -181,4 +181,258 @@ a
 </details>
 </p>
 </details>
+
+<details><summary>Example of all operations</summary>
+<p>
+ 
+```python
+# --- Prints binary version of Basic Values --- #
+print("Binary Values:")
+print(bin_one.binary())
+print(bin_two.binary(), "\n")
+print(hex_one.binary())
+print(hex_two.binary(), "\n")
+print(dec_one.binary())
+print(dec_two.binary(), "\n")
+print(ascii_one.binary())
+print(ascii_two.binary(), "\n")
+
+# --- Prints hexadecimal version of Basic Values --- #
+print("Hexadecimal Values:")
+print(bin_one.hexadecimal())
+print(bin_two.hexadecimal(), "\n")
+print(hex_one.hexadecimal())
+print(hex_two.hexadecimal(), "\n")
+print(dec_one.hexadecimal())
+print(dec_two.hexadecimal(), "\n")
+print(ascii_one.hexadecimal())
+print(ascii_two.hexadecimal(), "\n")
+
+# --- Prints decimal version of Basic Values --- #
+print("Decimal Values:")
+print(bin_one.decimal())
+print(bin_two.decimal(), "\n")
+print(hex_one.decimal())
+print(hex_two.decimal(), "\n")
+print(dec_one.decimal())
+print(dec_two.decimal(), "\n")
+print(ascii_one.decimal())
+print(ascii_two.decimal(), "\n")
+
+# --- Prints ascii version (if possible) of Basic Values --- #
+print("Ascii Values:")
+print(bin_one.ascii())
+print(bin_two.ascii(), "\n")
+print(hex_one.ascii())
+print(hex_two.ascii(), "\n")
+print(dec_one.ascii())
+print(dec_two.ascii(), "\n")
+print(ascii_one.ascii())
+print(ascii_two.ascii(), "\n")
+
+# --- Adds same datatypes --- #
+print("Adds same datatypes:")
+print(bin_one + bin_two)
+print(hex_one + hex_two)
+print(dec_one + dec_two)
+print(ascii_one + ascii_two)
+
+# --- ANDs same datatypes --- #
+print("\nANDs same datatypes:")
+print(bin_one & bin_two)
+print(hex_one & hex_two)
+print(dec_one & dec_two)
+print(ascii_one & ascii_two)
+
+# --- ORs same datatypes --- #
+print("\nORs same datatypes:")
+print(bin_one | bin_two)
+print(hex_one | hex_two)
+print(dec_one | dec_two)
+print(ascii_one | ascii_two)
+
+# --- XORs same datatypes --- #
+print("\nXORs same datatypes:")
+print(bin_one ^ bin_two)
+print(hex_one ^ hex_two)
+print(dec_one ^ dec_two)
+print(ascii_one ^ ascii_two)
+
+# --- Inverts values --- #
+print("\nInverts values:")
+print(~bin_one)
+print(~hex_one)
+print(~dec_one)
+print(~ascii_one)
+
+# --- Bitwise Shift --- #
+print("\nShift all values left and right by 2 bits:")
+print((bin_one >> 2), (bin_one << 2))
+print((hex_one >> 2), (hex_one << 2))
+print((dec_one >> 2), (dec_one << 2))
+print((ascii_one >> 2), (ascii_one << 2))
+
+# --- ANDs same datatypes conserves type --- #
+print("\nANDs same datatypes conserves type:")
+print(bin_one & bin_two)
+print((hex_one & hex_two).hexadecimal())
+print((dec_one & dec_two).decimal())
+print((ascii_one & ascii_two).ascii())
+
+# --- ORs same datatypes conserves type --- #
+print("\nORs same datatypes conserves type:")
+print(bin_one | bin_two)
+print((hex_one | hex_two).hexadecimal())
+print((dec_one | dec_two).decimal())
+print((ascii_one | ascii_two).ascii())
+
+# --- XORs same datatypes conserves type --- #
+print("\nXORs same datatypes conserves type:")
+print(bin_one ^ bin_two)
+print((hex_one ^ hex_two).hexadecimal())
+print((dec_one ^ dec_two).decimal())
+print((ascii_one ^ ascii_two).ascii())
+
+# --- Inverts values conserves type --- #
+print("\nInverts values conserves type:")
+print(~bin_one)
+print((~hex_one).hexadecimal())
+print((~dec_one).decimal())
+print((~ascii_one).ascii())
+
+# --- Bitwise Shift conserves type --- #
+print("\nShift all values left and right by 2 bits and conserves type:")
+print((bin_one >> 2), (bin_one << 2))
+print((hex_one >> 2).hexadecimal(), (hex_one << 2).hexadecimal())
+print((dec_one >> 2).decimal(), (dec_one << 2).decimal())
+print((ascii_one >> 2).ascii(), (ascii_one << 2).ascii())
+```
+
+<details><summary>This will output</summary>
+<p>
+
+```
+Binary Values:
+00001111
+00110011 
+
+00010000
+01000000 
+
+00010000
+10000000 
+
+00100000
+01100001 
+
+Hexadecimal Values:
+0F
+33 
+
+10
+40 
+
+10
+80 
+
+20
+61 
+
+Decimal Values:
+15
+51 
+
+16
+64 
+
+16
+128 
+
+32
+97 
+
+Ascii Values:
+None
+3 
+
+None
+@ 
+
+None
+None 
+
+ 
+a 
+
+Adds same datatypes:
+00001111 00110011
+10 40
+16 128
+ a
+
+ANDs same datatypes:
+00000011
+00000000
+00000000
+00100000
+
+ORs same datatypes:
+00111111
+01010000
+10010000
+01100001
+
+XORs same datatypes:
+00111100
+01010000
+10010000
+01000001
+
+Inverts values:
+11110000
+11101111
+11101111
+11011111
+
+Shift all values left and right by 2 bits:
+00000011 00111100
+00000100 01000000
+00000100 01000000
+00001000 10000000
+
+ANDs same datatypes conserves type:
+00000011
+00
+0
+ 
+
+ORs same datatypes conserves type:
+00111111
+50
+144
+a
+
+XORs same datatypes conserves type:
+00111100
+50
+144
+A
+
+Inverts values conserves type:
+11110000
+EF
+239
+None
+
+Shift all values left and right by 2 bits and conserves type:
+00000011 00111100
+04 40
+4 64
+None None
+```
+
+</p>
+</details>
+</p>
+</details>
  
