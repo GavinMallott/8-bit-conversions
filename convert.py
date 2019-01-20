@@ -13,6 +13,7 @@ import re
 
 
 class AsciiConversionError(Exception):
+    """The given value does not have an ascii equivalent"""
     pass
 
 
