@@ -44,7 +44,7 @@ print("\nBitwise Shift:")
 [print((bin + " >> " + "2" + ": " + convert.bitwise_shift(bin, 1, 2)) + ", " + bin + " << " + "2" + (convert.bitwise_shift(bin, 0, 2))) for bin in binaries]
 ```
 
-Will output:
+<details><summary>Will output:</summary>
 
 ```
 Binaries:
@@ -119,5 +119,6 @@ Bitwise Shift:
 00110011 01010101 >> 2: 00001100 00010101, 00110011 01010101 << 2: 11001100 01010100
 11100000 00001111 >> 2: 00111000 00000011, 11100000 00001111 << 2: 10000000 00111100
 ```
+</details>
 </p>
 </details>
