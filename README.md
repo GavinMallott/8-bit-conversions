@@ -124,7 +124,7 @@ Bitwise Shift:
 </details>
 </p>
 </details>
-
+<br />
 
 ## conversions.py
 
