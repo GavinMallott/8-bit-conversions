@@ -439,4 +439,4 @@ None None
 <br />
 <p>Further Documentaion can be found in source code.</p>
 <p>Project by Gavin Mallott</p>
-<p>Visit me at [gavinmallott.com](http://gavinmallott.com)</p>
+<p>Visit me at <a href="http://gavinmallott.com">gavinmallott.com</a></p>
