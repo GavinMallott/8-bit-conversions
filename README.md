@@ -14,7 +14,7 @@ Two main files:
 <details><summary>Examples of all bitwise operations on four different binary numbers:</summary>
 <p>
 
-```
+```python
 binaries = [bin_one, bin_two, bin_three, bin_four]
 
 print("Not:")
@@ -31,6 +31,7 @@ print("\nBitwise Shift:")
 
 Will output:
 
+```
 Not:
 10101010
 00011111
@@ -95,5 +96,7 @@ Bitwise Shift:
 00010101 01010100
 00111000 10000000
 00001100 01010100
-00111000 00111100</p>
+00111000 00111100
+```
+</p>
 </details>
