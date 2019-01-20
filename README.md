@@ -8,16 +8,31 @@ Two main files:
 
   The convert.py file provides the Convert class.
   
-  This class is used to convert between binary, hexadecimal, decimal, and ascii values.  All values are expected as " "-speparated strings of 8-bit characters e.g. "00001111 10101010", "F0 5E", "129 255", "Hello There".  Convert also includes bitwise operations: and, or, xor, not (invert) and bitwise shifts.
+  This class is used to convert between binary, hexadecimal, decimal, and ascii values.  All values are expected as " "-speparated strings of 8-bit characters e.g. "00001111 10101010", "F0 5E", "129 255", "Hello There".  Convert also includes bitwise operations: and, or, xor, not (invert) and bitwise shifts.  Initialize the Convert object with `convert = Convert()`.
   
 #### Examples:
+<details><summary>Creating Binary Numbers</summary>
+<p>
+
+```python
+bin_one = "01010101"
+bin_two = "11100000"
+bin_three = "00110011 01010101"
+bin_four = "11100000 00001111"
+```
+</p>
+</details>
+
 <details><summary>Examples of all bitwise operations on four different binary numbers:</summary>
 <p>
 
 ```python
 binaries = [bin_one, bin_two, bin_three, bin_four]
 
-print("Not:")
+print("Binaries:")
+[print(bin) for bin in binaries]
+
+print("\nNot:")
 [print("NOT " + bin + ": " + convert.logical_not(bin)) for bin in binaries]
 print("\nAnd:")
 [[print(bin1 + " AND " + bin2 + ": " + convert.logical_and(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
@@ -32,6 +47,12 @@ print("\nBitwise Shift:")
 Will output:
 
 ```
+Binaries:
+01010101
+11100000
+00110011 01010101
+11100000 00001111
+
 Not:
 NOT 01010101: 10101010
 NOT 11100000: 00011111
