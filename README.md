@@ -12,7 +12,7 @@ Two main files:
   
 #### Examples:
 <details><summary>Examples of all bitwise operations on four different binary numbers:</summary>
-```python
+```
 binaries = [bin_one, bin_two, bin_three, bin_four]
 
 print("Not:")
