@@ -4,11 +4,11 @@ Two main files:
   * convert.py
   * conversions.py
     
-## convert.py:
+## convert.py
 
-  The convert.py file provides the Convert class.
+ The convert.py file provides the Convert class.
   
-  This class is used to convert between binary, hexadecimal, decimal, and ascii values.  All values are expected as " "-speparated strings of 8-bit characters e.g. "00001111 10101010", "F0 5E", "129 255", "Hello There".  Convert also includes bitwise operations: and, or, xor, not (invert) and bitwise shifts.  Initialize the Convert object with `convert = Convert()`.
+ This class is used to convert between binary, hexadecimal, decimal, and ascii values.  All values are expected as " "-speparated strings of 8-bit characters e.g. `"00001111 10101010", "F0 5E", "129 255", "Hello There"`.  Convert also includes bitwise operations: and, or, xor, not (invert) and bitwise shifts.  Initialize the Convert object with `convert = Convert()`.
   
 #### Examples:
 <details><summary>Creating Binary Numbers</summary>
@@ -122,3 +122,55 @@ Bitwise Shift:
 </details>
 </p>
 </details>
+
+
+## conversions.py
+
+ The conversions.py file creates datatypes for Binary, Hexadecimal, Decimal, and Ascii.  The ConversionValue class is the base class, with each subtype inhieriting from it.  ConversionValue adds methods to convert easily between different datatypes with `self.binary(), self.hexadecimal(), self.decimal(), and self.ascii()`. 
+  The ConversionValue class also adds operator overloading methods.  The `+` operator concatentates numbers of the same datatype.  The `&, |, ^, and ~` perform and, or, xor, and not operations respectivly. The `>> and <<` perform bitwise shifts on binary numbers.
+  
+#### Examples:
+<details><summary>Creating numbers in each datatype</summary>
+
+```python
+bin_one = Binary("00001111")
+bin_two = Binary("00110011")
+
+hex_one = Hexadecimal("10")
+hex_two = Hexadecimal("40")
+
+dec_one = Decimal("16")
+dec_two = Decimal("128")
+
+ascii_one = Ascii(" ")
+ascii_two = Ascii("a")
+
+print("Basic Values:")
+print(bin_one)
+print(bin_two, "\n")
+print(hex_one)
+print(hex_two, "\n")
+print(dec_one)
+print(dec_two, "\n")
+print(ascii_one)
+print(ascii_two, "\n")
+```
+<details><summary>This will output</summary>
+
+```python
+Basic Values:
+00001111
+00110011 
+
+10
+40 
+
+16
+128 
+
+ 
+a 
+```
+</details>
+</details>
+ 
