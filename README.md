@@ -45,6 +45,7 @@ print("\nBitwise Shift:")
 ```
 
 <details><summary>This will output:</summary>
+<p>
 
 ```
 Binaries:
@@ -119,6 +120,7 @@ Bitwise Shift:
 00110011 01010101 >> 2: 00001100 00010101, 00110011 01010101 << 2: 11001100 01010100
 11100000 00001111 >> 2: 00111000 00000011, 11100000 00001111 << 2: 10000000 00111100
 ```
+</p>
 </details>
 </p>
 </details>
@@ -132,6 +134,7 @@ Bitwise Shift:
   
 #### Examples:
 <details><summary>Creating numbers in each datatype</summary>
+<p>
 
 ```python
 bin_one = Binary("00001111")
@@ -156,7 +159,9 @@ print(dec_two, "\n")
 print(ascii_one)
 print(ascii_two, "\n")
 ```
+
 <details><summary>This will output</summary>
+<p>
 
 ```
 Basic Values:
@@ -172,6 +177,8 @@ Basic Values:
  
 a 
 ```
+</p>
 </details>
+</p>
 </details>
  
