@@ -436,6 +436,7 @@ None None
 </p>
 </details>
 <br />
-<p>Further Documentaion can be found in source code.
-Project by Gavin Mallott
-Visit me at [gavinmallott.com](http://gavinmallott.com)</p>
+<br />
+<p>Further Documentaion can be found in source code.</p>
+<p>Project by Gavin Mallott</p>
+<p>Visit me at [gavinmallott.com](http://gavinmallott.com)</p>
