@@ -29,7 +29,108 @@ class Convert(object):
         and ASCII Comparisons
     """
     def __init__(self):
-        pass
+        self.hex_to_ascii_dict = {
+        '30': '0',
+        '31': '1',
+        '32': '2',
+        '33': '3',
+        '34': '4',
+        '35': '5',
+        '36': '6',
+        '37': '7',
+        '38': '8',
+        '39': '9',
+
+        '41': 'A',
+        '42': 'B',
+        '43': 'C',
+        '44': 'D',
+        '45': 'E',
+        '46': 'F',
+        '47': 'G',
+        '48': 'H',
+        '49': 'I',
+        '4A': 'J',
+        '4B': 'K',
+        '4C': 'L',
+        '4D': 'M',
+        '4E': 'N',
+        '4F': 'O',
+        '50': 'P',
+        '51': 'Q',
+        '52': 'R',
+        '53': 'S',
+        '54': 'T',
+        '55': 'U',
+        '56': 'V',
+        '57': 'W',
+        '58': 'X',
+        '59': 'Y',
+        '5A': 'Z',
+
+        '61': 'a',
+        '62': 'b',
+        '63': 'c',
+        '64': 'd',
+        '65': 'e',
+        '66': 'f',
+        '67': 'g',
+        '68': 'h',
+        '69': 'i',
+        '6A': 'j',
+        '6B': 'k',
+        '6C': 'l',
+        '6D': 'm',
+        '6E': 'n',
+        '6F': 'o',
+        '70': 'p',
+        '71': 'q',
+        '72': 'r',
+        '73': 's',
+        '74': 't',
+        '75': 'u',
+        '76': 'v',
+        '77': 'w',
+        '78': 'x',
+        '79': 'y',
+        '7A': 'z',
+
+        '20': ' ',
+        '21': '!',
+        '22': '"',
+        '23': '#',
+        '24': '$',
+        '25': '%',
+        '26': '&',
+        '27': "'",
+        '28': '(',
+        '29': ')',
+        '2A': '*',
+        '2B': '+',
+        '2C': ',',
+        '2D': '-',
+        '2E': '.',	
+        '2F': '/',
+
+        '3A': ':',
+        '3B': ';',
+        '3C': '<',
+        '3D': '=',
+        '3E': '>',
+        '3F': '?',
+        '40': '@',
+
+        '5B': '[',
+        '5C': "\\",
+        '5D': ']',
+        '5E': '^',
+        '5F': '_',
+        '60': '`',
+
+        '7B': '{',
+        '7C': '|',
+        '7D': '}',
+        '7E': '~'}
 
     # General Conversions
     def to_binary(self, ascii=None, decimal=None, hexadecimal=None, binary=None) -> str:
@@ -73,11 +174,11 @@ class Convert(object):
         """
         try:
             if decimal != None:
-                return ' '.join([self.decimal_to_ascii(dec) for dec in decimal.split(" ")])
+                return ''.join([self.decimal_to_ascii(dec) for dec in decimal.split(" ")])
             elif binary != None:
-                return ' '.join([self.binary_to_ascii(bin) for bin in binary.split(" ")])
+                return ''.join([self.binary_to_ascii(bin) for bin in binary.split(" ")])
             elif hexadecimal != None:
-                return ' '.join([self.hex_to_ascii(hex) for hex in hexadecimal.split(" ")])
+                return ''.join([self.hex_to_ascii(hex) for hex in hexadecimal.split(" ")])
             elif ascii != None:
                 return ascii
         except TypeError:
@@ -132,7 +233,7 @@ class Convert(object):
 
     def binary_to_hex(self, bin: str) -> str:
         """Takes a given binary number and converts in into a hexadecimal number"""
-
+        
         return self.decimal_to_hex(self.binary_to_decimal(bin))
 
     def binary_to_decimal(self, bin: str) -> str:
@@ -171,13 +272,17 @@ class Convert(object):
     # Text and number conversion
     def ascii_to_hex(self, ascii: str) -> str:
         """Takes a given ascii value and converts it into a hexadecimal number"""
-
-        return self._interpret_ascii_to_hex(ascii)
+        try:
+            return [hex for hex, ascii_val in self.hex_to_ascii_dict.items() if ascii_val == ascii][0]
+        except KeyError:
+            pass
 
     def hex_to_ascii(self, hex: str) -> str:
         """Takes a given hexadecimal number and converts it into an ascii value"""
-
-        return self._interpret_hex_to_acii(hex)
+        try:
+            return self.hex_to_ascii_dict[hex]
+        except KeyError:
+            pass
 
     def ascii_to_binary(self, ascii: str) -> str:
         """Takes a given ascii value and converts it into a binary number"""
@@ -198,217 +303,6 @@ class Convert(object):
         """Takes a given decimal number and converts it into an ascii value"""
 
         return self.hex_to_ascii(self.decimal_to_hex(dec))
-
-    # Ascii Library
-    def _interpret_hex_to_acii(self, hex: str) -> str:
-        """Takes a given hexadecimal number and returns a matching ascii value"""
-
-        if hex == '30': return '0'
-        if hex == '31': return '1'
-        if hex == '32': return '2'
-        if hex == '33': return '3'
-        if hex == '34': return '4'
-        if hex == '35': return '5'
-        if hex == '36': return '6'
-        if hex == '37': return '7'
-        if hex == '38': return '8'
-        if hex == '39': return '9'
-
-        if hex == '41': return 'A'
-        if hex == '42': return 'B'
-        if hex == '43': return 'C'
-        if hex == '44': return 'D'
-        if hex == '45': return 'E'
-        if hex == '46': return 'F'
-        if hex == '47': return 'G'
-        if hex == '48': return 'H'
-        if hex == '49': return 'I'
-        if hex == '4A': return 'J'
-        if hex == '4B': return 'K'
-        if hex == '4C': return 'L'
-        if hex == '4D': return 'M'
-        if hex == '4E': return 'N'
-        if hex == '4F': return 'O'
-        if hex == '50': return 'P'
-        if hex == '51': return 'Q'
-        if hex == '52': return 'R'
-        if hex == '53': return 'S'
-        if hex == '54': return 'T'
-        if hex == '55': return 'U'
-        if hex == '56': return 'V'
-        if hex == '57': return 'W'
-        if hex == '58': return 'X'
-        if hex == '59': return 'Y'
-        if hex == '5A': return 'Z'
-
-        if hex == '61': return 'a'
-        if hex == '62': return 'b'
-        if hex == '63': return 'c'
-        if hex == '64': return 'd'
-        if hex == '65': return 'e'
-        if hex == '66': return 'f'
-        if hex == '67': return 'g'
-        if hex == '68': return 'h'
-        if hex == '69': return 'i'
-        if hex == '6A': return 'j'
-        if hex == '6B': return 'k'
-        if hex == '6C': return 'l'
-        if hex == '6D': return 'm'
-        if hex == '6E': return 'n'
-        if hex == '6F': return 'o'
-        if hex == '70': return 'p'
-        if hex == '71': return 'q'
-        if hex == '72': return 'r'
-        if hex == '73': return 's'
-        if hex == '74': return 't'
-        if hex == '75': return 'u'
-        if hex == '76': return 'v'
-        if hex == '77': return 'w'
-        if hex == '78': return 'x'
-        if hex == '79': return 'y'
-        if hex == '7A': return 'z'
-
-        if hex == '20': return ' '
-        if hex == '21': return '!'
-        if hex == '22': return '"'
-        if hex == '23': return '#'
-        if hex == '24': return '$'
-        if hex == '25': return '%'
-        if hex == '26': return '&'
-        if hex == '27': return "'"
-        if hex == '28': return '('
-        if hex == '29': return ')'
-        if hex == '2A': return '*'
-        if hex == '2B': return '+'
-        if hex == '2C': return ','
-        if hex == '2D': return '-'
-        if hex == '2E': return '.'	
-        if hex == '2F': return '/'
-
-        if hex == '3A': return ':'
-        if hex == '3B': return ';'
-        if hex == '3C': return '<'
-        if hex == '3D': return '='
-        if hex == '3E': return '>'
-        if hex == '3F': return '?'
-        if hex == '40': return '@'
-
-        if hex == '5B': return '['
-        if hex == '5C': return "\\"
-        if hex == '5D': return ']'
-        if hex == '5E': return '^'
-        if hex == '5F': return '_'
-        if hex == '60': return '`'
-
-        if hex == '7B': return '{'
-        if hex == '7C': return '|'
-        if hex == '7D': return '}'
-        if hex == '7E': return '~'
-
-    def _interpret_ascii_to_hex(self, ascii: str) -> str:
-        """Takes a given ascii value and returns a matching hexadecimal number"""
-
-        if ascii == '0': return '30'
-        if ascii == '1': return '31'
-        if ascii == '2': return '32'
-        if ascii == '3': return '33'
-        if ascii == '4': return '34'
-        if ascii == '5': return '35'
-        if ascii == '6': return '36'
-        if ascii == '7': return '37'
-        if ascii == '8': return '38'
-        if ascii == '9': return '39'
-
-        if ascii == 'A': return '41'
-        if ascii == 'B': return '42'
-        if ascii == 'C': return '43'
-        if ascii == 'D': return '44'
-        if ascii == 'E': return '45'
-        if ascii == 'F': return '46'
-        if ascii == 'G': return '47'
-        if ascii == 'H': return '48'
-        if ascii == 'I': return '49'
-        if ascii == 'J': return '4A'
-        if ascii == 'K': return '4B'
-        if ascii == 'L': return '4C'
-        if ascii == 'M': return '4D'
-        if ascii == 'N': return '4E'
-        if ascii == 'O': return '4F'
-        if ascii == 'P': return '50'
-        if ascii == 'Q': return '51'
-        if ascii == 'R': return '52'
-        if ascii == 'S': return '53'
-        if ascii == 'T': return '54'
-        if ascii == 'U': return '55'
-        if ascii == 'V': return '56'
-        if ascii == 'W': return '57'
-        if ascii == 'X': return '58'
-        if ascii == 'Y': return '59'
-        if ascii == 'Z': return '5A'
-
-        if ascii == 'a': return '61'
-        if ascii == 'b': return '62'
-        if ascii == 'c': return '63'
-        if ascii == 'd': return '64'
-        if ascii == 'e': return '65'
-        if ascii == 'f': return '66'
-        if ascii == 'g': return '67'
-        if ascii == 'h': return '68'
-        if ascii == 'i': return '69'
-        if ascii == 'j': return '6A'
-        if ascii == 'k': return '6B'
-        if ascii == 'l': return '6C'
-        if ascii == 'm': return '6D'
-        if ascii == 'n': return '6E'
-        if ascii == 'o': return '6F'
-        if ascii == 'p': return '70'
-        if ascii == 'q': return '71'
-        if ascii == 'r': return '72'
-        if ascii == 's': return '73'
-        if ascii == 't': return '74'
-        if ascii == 'u': return '75'
-        if ascii == 'v': return '76'
-        if ascii == 'w': return '77'
-        if ascii == 'x': return '78'
-        if ascii == 'y': return '79'
-        if ascii == 'z': return '7A'
-
-        if ascii == ' ': return '20'
-        if ascii == '!': return '21'
-        if ascii == '"': return '22'
-        if ascii == '#': return '23'
-        if ascii == '$': return '24'
-        if ascii == '%': return '25'
-        if ascii == '&': return '26'
-        if ascii == "'": return '27'
-        if ascii == '(': return '28'
-        if ascii == ')': return '29'
-        if ascii == '*': return '2A'
-        if ascii == '+': return '2B'
-        if ascii == ',': return '2C'
-        if ascii == '-': return '2D'
-        if ascii == '.': return '2E'
-        if ascii == '/': return '2F'
-
-        if ascii == ':': return '3A'
-        if ascii == ';': return '3B'
-        if ascii == '<': return '3C'
-        if ascii == '=': return '3D'
-        if ascii == '>': return '3E'
-        if ascii == '?': return '3F'
-        if ascii == '@': return '40'
-
-        if ascii == '[': return '5B'
-        if ascii == "\\": return '5C'
-        if ascii == ']': return '5D'
-        if ascii == '^': return '5E'
-        if ascii == '_': return '5F'
-        if ascii == '`': return '60'
-
-        if ascii == '{': return '7B'
-        if ascii == '|': return '7C'
-        if ascii == '}': return '7D'
-        if ascii == '~': return '7E'
 
     # Logical Operators
     def _multi_logical(self, logic_function: 'function', bin_one: str, bin_two: str) -> str:
@@ -504,6 +398,20 @@ class Convert(object):
 
         return ''.join(notd_values)
 
+    def _single_bitwise_shift(self, bin_str: str, direction: bool, bits: int) -> str:
+        """Shifts binary number by given bits in given direction (1: right, 0: left)"""
+        new_bin = ["0" for i in range(bits)]
+        all_bits = list(bin_str)
+        while len(new_bin) < 8:
+            if direction:
+                new_bin.append(all_bits[0])
+                del all_bits[0]
+            else:
+                new_bin = [all_bits[-1]] + new_bin
+                del all_bits[-1]
+
+        return ''.join(new_bin)
+
     def logical_and(self, bin_one: str, bin_two: str) -> str:
         """Returns the AND operation on two binary numbers"""
         return self._multi_logical(self._single_and, bin_one, bin_two)
@@ -524,41 +432,31 @@ class Convert(object):
 
     def bitwise_shift(self, bin_str: str, direction: bool, bits: int) -> str:
         """Shifts binary number by given bits in given direction (1: right, 0: left)"""
-        new_bin = ["0" for i in range(bits)]
-        all_bits = list(bin_str)
-        while len(new_bin) < 8:
-            if direction:
-                new_bin.append(all_bits[0])
-                del all_bits[0]
-            else:
-                new_bin = [all_bits[-1]] + new_bin
-                del all_bits[-1]
+        bins = bin_str.split(" ")
+        shifted_values = [self._single_bitwise_shift(bin, direction, bits) for bin in bins]
+        return " ".join(shifted_values)
 
-        return ''.join(new_bin)
-                
 
 if __name__ == '__main__':
     convert = Convert()
 
-    '''
     bin_one = "01010101"
     bin_two = "11100000"
-    bin_three = "00110011 " + "01010101"
-    bin_four = "11100000" + " 00001111"
+    bin_three = "00110011 01010101"
+    bin_four = "11100000 00001111"
 
     binaries = [bin_one, bin_two, bin_three, bin_four]
 
-    print("Not:")
-    [print(convert.logical_not(bin)) for bin in binaries]
-    print("\nAnd:")
-    [[print(convert.logical_and(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
-    print("\nOr:")
-    [[print(convert.logical_or(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
-    print("\nXor:")
-    [[print(convert.logical_xor(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
-    '''
+    print("Binaries:")
+    [print(bin) for bin in binaries]
 
-    binary_number = "01010101"
-    print(binary_number)
-    print(convert.bitwise_shift(binary_number, 1, 4))
-    print(convert.bitwise_shift(binary_number, 0, 4))
+    print("\nNot:")
+    [print("NOT " + bin + ": " + convert.logical_not(bin)) for bin in binaries]
+    print("\nAnd:")
+    [[print(bin1 + " AND " + bin2 + ": " + convert.logical_and(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
+    print("\nOr:")
+    [[print(bin1 + " OR " + bin2 + ": " + convert.logical_or(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
+    print("\nXor:")
+    [[print(bin1 + " XOR " + bin2 + ": " + convert.logical_xor(bin1, bin2)) for bin1 in binaries] for bin2 in binaries]
+    print("\nBitwise Shift:")
+    [print((bin + " >> " + "2" + ": " + convert.bitwise_shift(bin, 1, 2)) + ", " + bin + " << " + "2" + ": " + (convert.bitwise_shift(bin, 0, 2))) for bin in binaries]

@@ -34,13 +34,13 @@ class BitLengthError(Exception):
 # --- ConversionValue Objects --- #
 class ConversionValue(object):
     """ Base class for binary, decimal, hexadecimal, and ascii datatypes
-        Contains methods for and, or, xor and not (inverse) logical operations
-        Contains methods or converting between datatypes
+    Contains methods for and, or, xor and not (inverse) logical operations
+    Contains methods or converting between datatypes
     """
     def __init__(self, value: str, size=DEFAULT_BIT_SIZE):
         """ Sets value, _size, checks value size
-            Initializes _strtype
-            Initializes Convert() class, can be referenced by _convert
+        Initializes _strtype
+        Initializes Convert() class, can be referenced by _convert
         """
         self.value = value
         self._size = size
@@ -117,7 +117,7 @@ class ConversionValue(object):
 
     def ascii(self, force=False) -> 'Ascii':
         """ Converts object to Ascii type
-            Set force=True to disable value checking
+        Set force=True to disable value checking
         """
         if not force:
             try:
@@ -137,15 +137,15 @@ class ConversionValue(object):
 
 class Binary(ConversionValue):
     """ Binary datatype inhierited from ConversionValue class
-        Sets the value syntax to common form
-        Checks value to fit in desired bit-size
-        Creates _strtype to reference data type
+    Sets the value syntax to common form
+    Checks value to fit in desired bit-size
+    Creates _strtype to reference data type
     """
     def __init__(self, value: str, size=DEFAULT_BIT_SIZE):
         """Calls super().__init__()
-            Sets _strtype to binary
-            Normalizes value syntax
-            Checks value size
+        Sets _strtype to binary
+        Normalizes value syntax
+        Checks value size
         """
         ConversionValue.__init__(self, value, size)
         self._strtype = "binary"
@@ -169,9 +169,9 @@ class Binary(ConversionValue):
 
 class Hexadecimal(ConversionValue):
     """ Hexadecimal datatype inhierited from ConversionValue class
-        Sets the value syntax to common form
-        Checks value to fit in desired bit-size
-        Creates _strtype to reference data type
+    Sets the value syntax to common form
+    Checks value to fit in desired bit-size
+    Creates _strtype to reference data type
     """
     def __init__(self, value: str, size=DEFAULT_BIT_SIZE):
         """Calls super().__init__()
@@ -193,9 +193,9 @@ class Hexadecimal(ConversionValue):
 
 class Decimal(ConversionValue):
     """ Decimal datatype inhierited from ConversionValue class
-        Sets the value syntax to common form
-        Checks value to fit in desired bit-size
-        Creates _strtype to reference data type
+    Sets the value syntax to common form
+    Checks value to fit in desired bit-size
+    Creates _strtype to reference data type
     """
     def __init__(self, value: str, size=DEFAULT_BIT_SIZE):
         """Calls super().__init__()
@@ -225,10 +225,10 @@ class Decimal(ConversionValue):
 
 class Ascii(ConversionValue):
     """ Ascii datatype inhierited from ConversionValue class
-        Sets the value syntax to common form
-        Checks value to fit in desired bit-size
-        Creates _strtype to reference data type
-        Alters __str__ method to display ascii characters without a space between them
+    Sets the value syntax to common form
+    Checks value to fit in desired bit-size
+    Creates _strtype to reference data type
+    Alters __str__ method to display ascii characters without a space between them
     """
     def __init__(self, value: str, size=DEFAULT_BIT_SIZE):
         """Calls super().__init__()
